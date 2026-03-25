@@ -1,22 +1,20 @@
+import java.util.Arrays;
+
 public class majority_element {
     public static void maj_ele(int arr[]){
-        int freq[]=new int[arr.length];
-        for(int i=0;i<arr.length;i++){
-            for(int j=0;j<arr.length;j++){
-                if(arr[i]==arr[j]){
-                    freq[arr[i]]+=1;
-                }
-            }
+       Arrays.sort(arr);
+       int freq=1;
+       for(int i=1;i<arr.length;i++){
+        if(arr[i]==arr[i-1]){
+            freq++;
+        }else{
+            freq=1;
         }
-        for(int i=0;i<arr.length;i++){
-            System.out.print(freq[i]+" ");
+        if(freq>arr.length/2){
+            System.out.println(arr[i]);
+            return;
         }
-        int max_freq=0;
-        for (int i=0;i<freq.length;i++){
-            if(max_freq <freq[i]){
-                max_freq=i;
-            }
-        }System.out.println("Max frquency of array is: "+max_freq);
+       }System.out.println("no mojority element");
     }
     public static void main(String args[]){
         int arr[]={2,3,4,2,3,2,2};
